@@ -39,6 +39,7 @@ js的继承模式
                    function F(){};
                    F.prototype=prest.prototype;
                    son.prototype=new F();
+                   son.prototype.constructor=son;    //把son的构造器指针 指向到了自己本身
                  }
                  inherit(Son,Prest)
 
