@@ -82,7 +82,53 @@ js的继承模式
 
             
             
-            
+         自己写的玩的一个继承封装
+         <div class='div'></div>
+         
+         function Parent(width,heigth,$elem){
+            console.log(this)
+                this.width=width;
+                this.heigth=heigth;
+                this.$elem=null;
+          }
+
+          Parent.prototype.implement=function($appendto){
+            console.log(this)
+            if(this.$elem){
+              this.$elem.css({width:this.width+"px",height:this.heigth+"px"}).appendTo($appendto)
+            }
+          }
+
+        function Son(zi_width,zi_heigth,lable){
+             Parent.call(this,zi_width,zi_heigth);
+             this.lable=lable;
+             this.$elem=$("<button>").text(this.lable)
+        }
+        Son.prototype=Object.create(Parent.prototype);
+        Son.prototype.implement=function(as){
+             console.log(this)
+             Parent.prototype.implement.call(this,as);
+             this.$elem.click(function(){
+               console.log("我是click事件")
+               });
+           }
+        //   zi.prototype.onClick=function(s){
+        //     console.log(this)
+        //     console.log("我是click事件"+s)
+        // }
+           var div=$(".div")
+           var a=new Son(190,100,"按钮")
+           a.implement(div)
+
+         
+         
+         
+         
+         
+         
+         
+         
+         
 
 
 
