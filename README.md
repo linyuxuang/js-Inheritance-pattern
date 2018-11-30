@@ -120,7 +120,47 @@ js的继承模式
            var a=new Son(190,100,"按钮")
            a.implement(div)
 
-         
+   上面这个功能 我们用对象关联实现它
+   
+   
+             var foo={
+               init:function(name,age){
+                  console.log(this)
+                  this.name=name;
+                  this.age=age;
+                  this.el=null;
+              },
+              indef:function(){
+                   if(this.el){
+                     this.el.css({width:200+"px",height:200+"px"}).appendTo("body")           
+                   }
+              }
+          }
+
+         var bar =Object.create(foo);
+
+          bar.sepe=function(name,age){
+               this.init(name,age);
+               this.el=$("<button>").text(this.name)
+          }
+
+           bar.binds=function(){
+              this.indef(); 
+              this.el.click(this.clicks.bind(this))
+           }  
+
+            bar.clicks=function(){
+            console.log("点击事件") 
+            }
+
+         var button=Object.create(bar);
+          button.sepe("按钮",25)
+
+          button.binds()
+
+    
+      
+                
          
          
          
