@@ -112,7 +112,7 @@ js的继承模式
                console.log("我是click事件")
                });
            }
-        //   zi.prototype.onClick=function(s){
+        //   Son.prototype.onClick=function(s){
         //     console.log(this)
         //     console.log("我是click事件"+s)
         // }
